@@ -3,8 +3,8 @@ import sys
 import os
 
 # ========= SETTINGS =========
-WIDTH = 128
-HEIGHT = 160
+WIDTH = 160
+HEIGHT = 120
 # ============================
 
 def convert_image(input_path):
