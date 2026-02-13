@@ -7,9 +7,13 @@ WIDTH = 160
 HEIGHT = 120
 # ============================
 
-def convert_image(input_path):
+def convert_image(input_path, rotate_90=False):
     # Load image
     img = Image.open(input_path)
+
+    # Rotate 90 degrees if requested
+    if rotate_90:
+        img = img.transpose(Image.ROTATE_90)
 
     # Resize to TFT resolution
     img = img.resize((WIDTH, HEIGHT))
@@ -37,6 +41,8 @@ def convert_image(input_path):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python convert.py image.jpg")
+        print("Usage: python convert.py image.jpg [--rotate-90]")
     else:
-        convert_image(sys.argv[1])
+        input_file = sys.argv[1]
+        rotate_90 = "--rotate-90" in sys.argv
+        convert_image(input_file, rotate_90)
